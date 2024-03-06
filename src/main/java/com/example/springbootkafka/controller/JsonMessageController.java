@@ -3,13 +3,16 @@ package com.example.springbootkafka.controller;
 import com.example.springbootkafka.kafka.JsonKafkaProducer;
 import com.example.springbootkafka.model.CustomMessage;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.*;
+import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RestController;
 
 @RestController
 @RequestMapping("/api/v1/kafka")
 public class JsonMessageController {
 
-    private JsonKafkaProducer kafkaProducer;
+    private final JsonKafkaProducer kafkaProducer;
 
     public JsonMessageController(JsonKafkaProducer kafkaProducer) {
         this.kafkaProducer = kafkaProducer;

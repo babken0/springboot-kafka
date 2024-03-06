@@ -2,7 +2,6 @@ package com.example.springbootkafka.kafka;
 
 import com.example.springbootkafka.model.CustomMessage;
 import org.apache.catalina.User;
-
 import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.kafka.core.KafkaTemplate;
@@ -16,18 +15,18 @@ public class JsonKafkaProducer {
 
     private static final Logger LOGGER = LoggerFactory.getLogger(JsonKafkaProducer.class);
 
-    private final KafkaTemplate<String , User> kafkaTemplate;
+    private final KafkaTemplate<String, User> kafkaTemplate;
 
     public JsonKafkaProducer(KafkaTemplate<String, User> kafkaTemplate) {
         this.kafkaTemplate = kafkaTemplate;
     }
 
-    public void sendMessage(CustomMessage data){
-        LOGGER.info(String.format("Message sent: %s",data.toString()));
+    public void sendMessage(CustomMessage data) {
+        LOGGER.info(String.format("Message sent: %s", data.toString()));
 
         Message<CustomMessage> message = MessageBuilder
                 .withPayload(data)
-                .setHeader(KafkaHeaders.TOPIC,"message_json")
+                .setHeader(KafkaHeaders.TOPIC, "message_json")
                 .build();
 
         kafkaTemplate.send(message);

@@ -14,8 +14,8 @@ public class MessageService {
         this.messageRepository = messageRepository;
     }
 
-    public Message saveMessage(CustomMessage customMessage) {
+    public void saveMessage(CustomMessage customMessage) {
         Message message = new Message(customMessage.getText());
-        return messageRepository.save(message);
+        messageRepository.save(message);
     }
 }

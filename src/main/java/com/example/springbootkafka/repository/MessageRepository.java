@@ -7,6 +7,4 @@ import org.springframework.stereotype.Repository;
 @Repository
 public interface MessageRepository extends JpaRepository<Message, Long> {
 
-    @Override
-    <S extends Message> S save(S entity);
 }
